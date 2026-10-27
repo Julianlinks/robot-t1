@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<sdf version="1.9"><world name="sort_cell">
+  <physics name="physics" type="ignored"><max_step_size>0.001</max_step_size><real_time_factor>1</real_time_factor></physics>
+  <gravity>0 0 -9.81</gravity>
+  <plugin filename="gz-sim-physics-system" name="gz::sim::systems::Physics"/>
+  <plugin filename="gz-sim-user-commands-system" name="gz::sim::systems::UserCommands"/>
+  <plugin filename="gz-sim-scene-broadcaster-system" name="gz::sim::systems::SceneBroadcaster"/>
+  <plugin filename="libcell_vacuum.so" name="sort_place::CellVacuum"/>
+  <scene><ambient>0.6 0.6 0.6 1</ambient><background>0.12 0.15 0.20 1</background><shadows>true</shadows></scene>
+  <light name="sun" type="directional"><pose>0 0 3 0 0 0</pose><diffuse>0.9 0.9 0.9 1</diffuse><direction>-0.4 0.2 -1</direction><cast_shadows>true</cast_shadows></light>
+<model name="table"><static>true</static>
+      <pose>0.39 0 0.375 0 0 0</pose>
+      <link name="link"><inertial><mass>1.0</mass><inertia>
+        <ixx>0.10020833333333334</ixx><iyy>0.07890833333333334</iyy><izz>0.08536666666666669</izz>
+        <ixy>0</ixy><ixz>0</ixz><iyz>0</iyz></inertia></inertial>
+        <collision name="collision"><geometry><box><size>0.62 0.8 0.75</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="visual"><geometry><box><size>0.62 0.8 0.75</size></box></geometry><material><ambient>0.32 0.34 0.38 1</ambient><diffuse>0.32 0.34 0.38 1</diffuse></material></visual>
+      </link></model>
+<model name="part_red_0"><static>false</static>
+      <pose>0.32 -0.21 0.754 0 0 0.15</pose>
+      <link name="link"><inertial><mass>0.005</mass><inertia>
+        <ixx>1.6166666666666665e-07</ixx><iyy>3.0833333333333333e-07</iyy><izz>4.166666666666667e-07</izz>
+        <ixy>0</ixy><ixz>0</ixz><iyz>0</iyz></inertia></inertial>
+        <collision name="collision"><geometry><box><size>0.026 0.018 0.008</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="visual"><geometry><box><size>0.026 0.018 0.008</size></box></geometry><material><ambient>0.9 0.12 0.10 1</ambient><diffuse>0.9 0.12 0.10 1</diffuse></material></visual>
+      </link></model>
+<model name="part_green_0"><static>false</static>
+      <pose>0.4 -0.21 0.754 0 0 -0.12</pose>
+      <link name="link"><inertial><mass>0.005</mass><inertia>
+        <ixx>1.6166666666666665e-07</ixx><iyy>3.0833333333333333e-07</iyy><izz>4.166666666666667e-07</izz>
+        <ixy>0</ixy><ixz>0</ixz><iyz>0</iyz></inertia></inertial>
+        <collision name="collision"><geometry><box><size>0.026 0.018 0.008</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="visual"><geometry><box><size>0.026 0.018 0.008</size></box></geometry><material><ambient>0.1 0.75 0.25 1</ambient><diffuse>0.1 0.75 0.25 1</diffuse></material></visual>
+      </link></model>
+<model name="part_blue_0"><static>false</static>
+      <pose>0.46 -0.21 0.754 0 0 0.05</pose>
+      <link name="link"><inertial><mass>0.005</mass><inertia>
+        <ixx>1.6166666666666665e-07</ixx><iyy>3.0833333333333333e-07</iyy><izz>4.166666666666667e-07</izz>
+        <ixy>0</ixy><ixz>0</ixz><iyz>0</iyz></inertia></inertial>
+        <collision name="collision"><geometry><box><size>0.026 0.018 0.008</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="visual"><geometry><box><size>0.026 0.018 0.008</size></box></geometry><material><ambient>0.1 0.35 0.95 1</ambient><diffuse>0.1 0.35 0.95 1</diffuse></material></visual>
+      </link></model>
+<model name="part_red_1"><static>false</static>
+      <pose>0.32 -0.12 0.754 0 0 -0.2</pose>
+      <link name="link"><inertial><mass>0.005</mass><inertia>
+        <ixx>1.6166666666666665e-07</ixx><iyy>3.0833333333333333e-07</iyy><izz>4.166666666666667e-07</izz>
+        <ixy>0</ixy><ixz>0</ixz><iyz>0</iyz></inertia></inertial>
+        <collision name="collision"><geometry><box><size>0.026 0.018 0.008</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="visual"><geometry><box><size>0.026 0.018 0.008</size></box></geometry><material><ambient>0.9 0.12 0.10 1</ambient><diffuse>0.9 0.12 0.10 1</diffuse></material></visual>
+      </link></model>
+<model name="part_green_1"><static>false</static>
+      <pose>0.4 -0.12 0.754 0 0 0.1</pose>
+      <link name="link"><inertial><mass>0.005</mass><inertia>
+        <ixx>1.6166666666666665e-07</ixx><iyy>3.0833333333333333e-07</iyy><izz>4.166666666666667e-07</izz>
+        <ixy>0</ixy><ixz>0</ixz><iyz>0</iyz></inertia></inertial>
+        <collision name="collision"><geometry><box><size>0.026 0.018 0.008</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="visual"><geometry><box><size>0.026 0.018 0.008</size></box></geometry><material><ambient>0.1 0.75 0.25 1</ambient><diffuse>0.1 0.75 0.25 1</diffuse></material></visual>
+      </link></model>
+<model name="part_blue_1"><static>false</static>
+      <pose>0.46 -0.12 0.754 0 0 -0.05</pose>
+      <link name="link"><inertial><mass>0.005</mass><inertia>
+        <ixx>1.6166666666666665e-07</ixx><iyy>3.0833333333333333e-07</iyy><izz>4.166666666666667e-07</izz>
+        <ixy>0</ixy><ixz>0</ixz><iyz>0</iyz></inertia></inertial>
+        <collision name="collision"><geometry><box><size>0.026 0.018 0.008</size></box></geometry><surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+        <visual name="visual"><geometry><box><size>0.026 0.018 0.008</size></box></geometry><material><ambient>0.1 0.35 0.95 1</ambient><diffuse>0.1 0.35 0.95 1</diffuse></material></visual>
+      </link></model>
+<model name="slot_red_0"><static>true</static><pose>0.32 0.12 0.7502 0 0 0.0</pose><link name="link"><visual name="v0"><pose>0 -0.012 0 0 0 0</pose><geometry><box><size>0.034 0.002 0.0003</size></box></geometry><material><ambient>0.9 0.12 0.10 1</ambient><diffuse>0.9 0.12 0.10 1</diffuse></material></visual><visual name="v1"><pose>0 0.012 0 0 0 0</pose><geometry><box><size>0.034 0.002 0.0003</size></box></geometry><material><ambient>0.9 0.12 0.10 1</ambient><diffuse>0.9 0.12 0.10 1</diffuse></material></visual><visual name="v2"><pose>-0.017 0 0 0 0 0</pose><geometry><box><size>0.002 0.024 0.0003</size></box></geometry><material><ambient>0.9 0.12 0.10 1</ambient><diffuse>0.9 0.12 0.10 1</diffuse></material></visual><visual name="v3"><pose>0.017 0 0 0 0 0</pose><geometry><box><size>0.002 0.024 0.0003</size></box></geometry><material><ambient>0.9 0.12 0.10 1</ambient><diffuse>0.9 0.12 0.10 1</diffuse></material></visual></link></model>
+<model name="slot_red_1"><static>true</static><pose>0.32 0.22 0.7502 0 0 0.0</pose><link name="link"><visual name="v0"><pose>0 -0.012 0 0 0 0</pose><geometry><box><size>0.034 0.002 0.0003</size></box></geometry><material><ambient>0.9 0.12 0.10 1</ambient><diffuse>0.9 0.12 0.10 1</diffuse></material></visual><visual name="v1"><pose>0 0.012 0 0 0 0</pose><geometry><box><size>0.034 0.002 0.0003</size></box></geometry><material><ambient>0.9 0.12 0.10 1</ambient><diffuse>0.9 0.12 0.10 1</diffuse></material></visual><visual name="v2"><pose>-0.017 0 0 0 0 0</pose><geometry><box><size>0.002 0.024 0.0003</size></box></geometry><material><ambient>0.9 0.12 0.10 1</ambient><diffuse>0.9 0.12 0.10 1</diffuse></material></visual><visual name="v3"><pose>0.017 0 0 0 0 0</pose><geometry><box><size>0.002 0.024 0.0003</size></box></geometry><material><ambient>0.9 0.12 0.10 1</ambient><diffuse>0.9 0.12 0.10 1</diffuse></material></visual></link></model>
+<model name="slot_green_0"><static>true</static><pose>0.4 0.12 0.7502 0 0 0.0</pose><link name="link"><visual name="v0"><pose>0 -0.012 0 0 0 0</pose><geometry><box><size>0.034 0.002 0.0003</size></box></geometry><material><ambient>0.1 0.75 0.25 1</ambient><diffuse>0.1 0.75 0.25 1</diffuse></material></visual><visual name="v1"><pose>0 0.012 0 0 0 0</pose><geometry><box><size>0.034 0.002 0.0003</size></box></geometry><material><ambient>0.1 0.75 0.25 1</ambient><diffuse>0.1 0.75 0.25 1</diffuse></material></visual><visual name="v2"><pose>-0.017 0 0 0 0 0</pose><geometry><box><size>0.002 0.024 0.0003</size></box></geometry><material><ambient>0.1 0.75 0.25 1</ambient><diffuse>0.1 0.75 0.25 1</diffuse></material></visual><visual name="v3"><pose>0.017 0 0 0 0 0</pose><geometry><box><size>0.002 0.024 0.0003</size></box></geometry><material><ambient>0.1 0.75 0.25 1</ambient><diffuse>0.1 0.75 0.25 1</diffuse></material></visual></link></model>
+<model name="slot_green_1"><static>true</static><pose>0.4 0.22 0.7502 0 0 0.0</pose><link name="link"><visual name="v0"><pose>0 -0.012 0 0 0 0</pose><geometry><box><size>0.034 0.002 0.0003</size></box></geometry><material><ambient>0.1 0.75 0.25 1</ambient><diffuse>0.1 0.75 0.25 1</diffuse></material></visual><visual name="v1"><pose>0 0.012 0 0 0 0</pose><geometry><box><size>0.034 0.002 0.0003</size></box></geometry><material><ambient>0.1 0.75 0.25 1</ambient><diffuse>0.1 0.75 0.25 1</diffuse></material></visual><visual name="v2"><pose>-0.017 0 0 0 0 0</pose><geometry><box><size>0.002 0.024 0.0003</size></box></geometry><material><ambient>0.1 0.75 0.25 1</ambient><diffuse>0.1 0.75 0.25 1</diffuse></material></visual><visual name="v3"><pose>0.017 0 0 0 0 0</pose><geometry><box><size>0.002 0.024 0.0003</size></box></geometry><material><ambient>0.1 0.75 0.25 1</ambient><diffuse>0.1 0.75 0.25 1</diffuse></material></visual></link></model>
+<model name="slot_blue_0"><static>true</static><pose>0.46 0.12 0.7502 0 0 0.0</pose><link name="link"><visual name="v0"><pose>0 -0.012 0 0 0 0</pose><geometry><box><size>0.034 0.002 0.0003</size></box></geometry><material><ambient>0.1 0.35 0.95 1</ambient><diffuse>0.1 0.35 0.95 1</diffuse></material></visual><visual name="v1"><pose>0 0.012 0 0 0 0</pose><geometry><box><size>0.034 0.002 0.0003</size></box></geometry><material><ambient>0.1 0.35 0.95 1</ambient><diffuse>0.1 0.35 0.95 1</diffuse></material></visual><visual name="v2"><pose>-0.017 0 0 0 0 0</pose><geometry><box><size>0.002 0.024 0.0003</size></box></geometry><material><ambient>0.1 0.35 0.95 1</ambient><diffuse>0.1 0.35 0.95 1</diffuse></material></visual><visual name="v3"><pose>0.017 0 0 0 0 0</pose><geometry><box><size>0.002 0.024 0.0003</size></box></geometry><material><ambient>0.1 0.35 0.95 1</ambient><diffuse>0.1 0.35 0.95 1</diffuse></material></visual></link></model>
+<model name="slot_blue_1"><static>true</static><pose>0.46 0.22 0.7502 0 0 0.0</pose><link name="link"><visual name="v0"><pose>0 -0.012 0 0 0 0</pose><geometry><box><size>0.034 0.002 0.0003</size></box></geometry><material><ambient>0.1 0.35 0.95 1</ambient><diffuse>0.1 0.35 0.95 1</diffuse></material></visual><visual name="v1"><pose>0 0.012 0 0 0 0</pose><geometry><box><size>0.034 0.002 0.0003</size></box></geometry><material><ambient>0.1 0.35 0.95 1</ambient><diffuse>0.1 0.35 0.95 1</diffuse></material></visual><visual name="v2"><pose>-0.017 0 0 0 0 0</pose><geometry><box><size>0.002 0.024 0.0003</size></box></geometry><material><ambient>0.1 0.35 0.95 1</ambient><diffuse>0.1 0.35 0.95 1</diffuse></material></visual><visual name="v3"><pose>0.017 0 0 0 0 0</pose><geometry><box><size>0.002 0.024 0.0003</size></box></geometry><material><ambient>0.1 0.35 0.95 1</ambient><diffuse>0.1 0.35 0.95 1</diffuse></material></visual></link></model>
+</world></sdf>

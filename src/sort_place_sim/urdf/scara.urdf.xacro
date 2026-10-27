@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<robot name="scara" xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <xacro:arg name="controllers" default=""/>
+  <material name="silver"><color rgba="0.65 0.69 0.75 1"/></material>
+  <material name="orange"><color rgba="0.95 0.42 0.08 1"/></material>
+  <material name="dark"><color rgba="0.15 0.18 0.24 1"/></material>
+  <xacro:macro name="box_body" params="mass x y z ox oy oz material">
+    <inertial><origin xyz="${ox} ${oy} ${oz}"/><mass value="${mass}"/>
+      <inertia ixx="${mass*(y*y+z*z)/12}" ixy="0" ixz="0"
+               iyy="${mass*(x*x+z*z)/12}" iyz="0" izz="${mass*(x*x+y*y)/12}"/>
+    </inertial>
+    <visual><origin xyz="${ox} ${oy} ${oz}"/><geometry><box size="${x} ${y} ${z}"/></geometry><material name="${material}"/></visual>
+    <collision><origin xyz="${ox} ${oy} ${oz}"/><geometry><box size="${x} ${y} ${z}"/></geometry></collision>
+  </xacro:macro>
+  <link name="world"/>
+  <joint name="world_fixed" type="fixed"><parent link="world"/><child link="base_link"/></joint>
+  <link name="base_link"><xacro:box_body mass="20" x="0.12" y="0.12" z="1.08" ox="0" oy="0" oz="0.54" material="dark"/></link>
+  <joint name="joint1" type="revolute">
+    <parent link="base_link"/><child link="upper_arm"/><origin xyz="0 0 1.10"/><axis xyz="0 0 1"/>
+    <limit lower="-2.6" upper="2.6" effort="100" velocity="0.7"/><dynamics damping="1.0" friction="0.1"/>
+  </joint>
+  <link name="upper_arm"><xacro:box_body mass="2" x="0.32" y="0.055" z="0.04" ox="0.16" oy="0" oz="0" material="orange"/></link>
+  <joint name="joint2" type="revolute">
+    <parent link="upper_arm"/><child link="forearm"/><origin xyz="0.32 0 0"/><axis xyz="0 0 1"/>
+    <limit lower="0.15" upper="2.85" effort="100" velocity="0.7"/><dynamics damping="1.0" friction="0.1"/>
+  </joint>
+  <link name="forearm"><xacro:box_body mass="1.5" x="0.28" y="0.045" z="0.035" ox="0.14" oy="0" oz="-0.04" material="silver"/></link>
+  <joint name="joint3" type="prismatic">
+    <parent link="forearm"/><child link="carriage"/><origin xyz="0.28 0 -0.06"/><axis xyz="0 0 -1"/>
+    <limit lower="0" upper="0.28" effort="200" velocity="0.1"/><dynamics damping="3" friction="0.1"/>
+  </joint>
+  <link name="carriage"><xacro:box_body mass="0.3" x="0.028" y="0.028" z="0.10" ox="0" oy="0" oz="0.005" material="dark"/></link>
+  <joint name="joint4" type="revolute">
+    <parent link="carriage"/><child link="nozzle_link"/><origin xyz="0 0 -0.08"/><axis xyz="0 0 1"/>
+    <limit lower="-3.141592653589793" upper="3.141592653589793" effort="10" velocity="1"/><dynamics damping="0.2"/>
+  </joint>
+  <!-- nozzle_link origin is the bottom suction contact point (TCP), facing -Z. -->
+  <link name="nozzle_link">
+    <inertial><origin xyz="0 0 0.025"/><mass value="0.08"/><inertia ixx="0.00002" ixy="0" ixz="0" iyy="0.00002" iyz="0" izz="0.00001"/></inertial>
+    <visual><origin xyz="0 0 0.025"/><geometry><cylinder radius="0.008" length="0.05"/></geometry><material name="dark"/></visual>
+    <collision><origin xyz="0 0 0.025"/><geometry><cylinder radius="0.008" length="0.05"/></geometry></collision>
+  </link>
+  <ros2_control name="GazeboSimSystem" type="system">
+    <hardware><plugin>gz_ros2_control/GazeboSimSystem</plugin></hardware>
+    <joint name="joint1"><command_interface name="position"/><state_interface name="position"><param name="initial_value">-0.7</param></state_interface><state_interface name="velocity"/></joint>
+    <joint name="joint2"><command_interface name="position"/><state_interface name="position"><param name="initial_value">1.4</param></state_interface><state_interface name="velocity"/></joint>
+    <joint name="joint3"><command_interface name="position"/><state_interface name="position"><param name="initial_value">0.06</param></state_interface><state_interface name="velocity"/></joint>
+    <joint name="joint4"><command_interface name="position"/><state_interface name="position"><param name="initial_value">-0.7</param></state_interface><state_interface name="velocity"/></joint>
+  </ros2_control>
+  <gazebo><plugin filename="libgz_ros2_control-system.so" name="gz_ros2_control::GazeboSimROS2ControlPlugin">
+    <parameters>$(arg controllers)</parameters><controller_manager_prefix_node_name>controller_manager</controller_manager_prefix_node_name>
+  </plugin></gazebo>
+  <gazebo reference="upper_arm"><material>Gazebo/Orange</material></gazebo>
+  <gazebo reference="forearm"><material>Gazebo/Grey</material></gazebo>
+</robot>

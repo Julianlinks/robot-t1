@@ -1,0 +1,10 @@
+# 0 means process every currently available source part.
+uint32 max_parts
+---
+bool success
+uint32 completed
+string message
+---
+string stage
+string object_id
+uint32 completed
